@@ -5,6 +5,10 @@ import "./ERC721/ERC721Enumerable.sol";
 
 contract QuizKing is ERC721, ERC721Enumerable {
     //event log
+    
     //struct
+    struct QuizData {
+
+    }
     //function
 }
