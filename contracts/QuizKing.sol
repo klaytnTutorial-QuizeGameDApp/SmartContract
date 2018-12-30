@@ -8,11 +8,17 @@ contract QuizKing is ERC721, ERC721Enumerable {
 
     //struct
     struct QuizData {
-
+        bytes32 id;
+        address author;
+        string problem;
+        string answer;
+        uint challenger;
+        bool isFinish;
     }
 
     //function
-    function createQuiz() {
+    function createQuiz(string message) public{
+        bytes32 id = keccak256(abi.encodePacked(block.number, msg.sender, message));
 
     }
 
