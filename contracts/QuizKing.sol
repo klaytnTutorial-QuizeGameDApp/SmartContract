@@ -12,7 +12,7 @@ contract QuizKing is ERC721, ERC721Enumerable {
         address author;
         string problem;
         string answer;
-        uint challenger;
+        address winner;
         bool isFinish;
     }
 
