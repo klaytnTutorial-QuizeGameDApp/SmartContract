@@ -15,6 +15,10 @@ contract QuizKing is ERC721, ERC721Enumerable {
         address winner;
         bool isFinish;
     }
+    //constructor
+    constructor() public {
+        owner = msg.sender;
+    }
 
     //function
     function createQuiz(string message) public{
