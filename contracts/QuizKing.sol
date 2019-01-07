@@ -15,7 +15,7 @@ contract QuizKing is ERC721, ERC721Enumerable {
         uint8 answer;                   // 정답
         address winner;                 // 문제를 푼 사람
         bool isDone;                    // 문제의 해결 여부
-        uint256 prize;                  //문제 보상 klay
+        uint256 prize;                  // 문제 보상 klay
     }
 
     mapping( bytes32 => QuizData ) public quizDataSet;
