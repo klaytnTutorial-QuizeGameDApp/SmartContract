@@ -36,8 +36,9 @@ contract QuizKing is ERC721, ERC721Enumerable {
     }
 
     //function
-    function createQuiz(string message) public{
-        bytes32 id = keccak256(abi.encodePacked(block.number, msg.sender, message));
+    function createQuiz(uint prizeCost) public{
+        // bytes32 id = keccak256(abi.encodePacked(block.number, msg.sender, prizeCost));
+
 
     }
 
@@ -63,6 +64,10 @@ contract QuizKing is ERC721, ERC721Enumerable {
             quizeDataSet[quizId].isDone,
             quizeDataSet[quizId].prize
         );
+    }
+
+    function getTotalQuizCount() public view returns (uint) {
+        return total
     }
 
 }
