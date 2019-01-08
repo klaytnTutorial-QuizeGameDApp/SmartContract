@@ -25,7 +25,7 @@ contract QuizKing is ERC721, ERC721Enumerable {
         uint win;                       // 문제를 풀어서 성공한 횟수
         uint lose;                      // 문제를 풀어서 실패한 횟수
     }
-
+    uint256 totalQuizCount;
     mapping( bytes32 => QuizData ) public quizDataSet;
     mapping( address => UserData ) public record;
 
@@ -36,10 +36,10 @@ contract QuizKing is ERC721, ERC721Enumerable {
     }
 
     //function
-    function createQuiz(uint prizeCost) public{
+    function createQuiz(uint prizeCost) public payable {
+        require(msg.value > 0)
         // bytes32 id = keccak256(abi.encodePacked(block.number, msg.sender, prizeCost));
-
-
+        totalQuizCount ++;
     }
 
     function applyQuiz() {
@@ -67,7 +67,7 @@ contract QuizKing is ERC721, ERC721Enumerable {
     }
 
     function getTotalQuizCount() public view returns (uint) {
-        return total
+        return totalQuizCount;
     }
 
 }
