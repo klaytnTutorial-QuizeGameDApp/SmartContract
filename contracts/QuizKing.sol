@@ -5,7 +5,7 @@ import "./ERC721/ERC721Enumerable.sol";
 
 contract QuizKing is ERC721, ERC721Enumerable {
     //event log
-    event quizCreated();
+    event QuizCreated(bytes32 indexed quizId, address indexed creator, uint256 quizPrize, string quizContent);
 
     //struct
     //quiz에 대한 정보들을 담고있는 struct
@@ -17,6 +17,7 @@ contract QuizKing is ERC721, ERC721Enumerable {
         uint8 answer;                   // 정답
         address winner;                 // 문제를 푼 사람
         bool isDone;                    // 문제의 해결 여부
+        uint256 challengerCount;        // 문제에 도전한 사람 수           
         uint256 prize;                  // 문제 보상 klay
     }
     
@@ -35,22 +36,33 @@ contract QuizKing is ERC721, ERC721Enumerable {
         owner = msg.sender;
     }
 
-    //function
-    function createQuiz(uint prizeCost) public payable {
+    //퀴즈 생성하는 함수
+    function createQuiz(string quizContent, bytes32[4] answerList, uint8 answer) public payable {
         require(msg.value > 0)
         // bytes32 id = keccak256(abi.encodePacked(block.number, msg.sender, prizeCost));
+        // uint quizId = totalQuizCount;
+        QuizeData newQuizData = QuizData({
+            quizId : totalQuizCount,
+            creator : msg.sender,
+            quizContent : quizContent,
+            answerList : answerList,
+            answer : answer,
+            prize : msg.value
+        });
+
         totalQuizCount ++;
+        emit QuizCreated(quizId, msg.sender, msg.value, quizContent);
     }
 
-    function applyQuiz() {
-
-    }
-
-    function checkAnswer() {
+    function applyQuiz(bytes32 quizId) {
 
     }
 
-    function payPrize() {
+    function checkAnswer(bytes32 quizId) {
+
+    }
+
+    function payPrize(bytes32 quizId) {
         
     }
 
