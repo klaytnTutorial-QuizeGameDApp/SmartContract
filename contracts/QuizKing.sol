@@ -1,7 +1,8 @@
-pragma solidity ^0.4.24;
+pragma solidity 0.4.24;
 
 import "./ERC721/ERC721.sol";
 import "./ERC721/ERC721Enumerable.sol";
+
 
 contract QuizKing is ERC721, ERC721Enumerable {
     //event log
@@ -26,13 +27,15 @@ contract QuizKing is ERC721, ERC721Enumerable {
         uint win;                       // 문제를 풀어서 성공한 횟수
         uint lose;                      // 문제를 풀어서 실패한 횟수
     }
-    uint256 totalQuizCount;
+
+    uint256 public totalQuizCount;
+
     mapping( bytes32 => QuizData ) public quizDataSet;
     mapping( address => UserData ) public record;
 
 
     //constructor
-    constructor() public {
+    constructor () public {
         owner = msg.sender;
     }
 
@@ -54,8 +57,8 @@ contract QuizKing is ERC721, ERC721Enumerable {
         emit QuizCreated(quizId, msg.sender, msg.value, quizContent);
     }
 
-    function applyQuiz(bytes32 quizId) {
-
+    function applyQuiz(bytes32 quizId, bytes32 uint8 answer) public payable {
+        
     }
 
     function checkAnswer(bytes32 quizId) {
