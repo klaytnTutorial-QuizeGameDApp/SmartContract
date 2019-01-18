@@ -3,7 +3,6 @@ pragma solidity 0.4.24;
 import "./ERC721/ERC721.sol";
 import "./ERC721/ERC721Enumerable.sol";
 
-
 contract QuizKing is ERC721, ERC721Enumerable {
     //event log
     event QuizCreated(bytes32 indexed quizId, address indexed creator, uint256 quizPrize, string quizContent);
@@ -65,7 +64,7 @@ contract QuizKing is ERC721, ERC721Enumerable {
 
     }
 
-    function payPrize(bytes32 quizId) {
+    function payPrize(bytes32 quizId) public payable {
         
     }
 
